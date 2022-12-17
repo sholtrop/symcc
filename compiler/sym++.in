@@ -49,7 +49,8 @@ else
     stdlib_ldflags="-L${!libcxx_var}/lib -Wl,-rpath,${!libcxx_var}/lib -lstdc++ -lc++ -stdlib=libc++"
 fi
 
-if [[ -v SYMCC_FORKING_EXECUTION ]]
+if [[ -v SYMCC_FORKING_EXECUTION ]]; then
+    echo "Using forking execution"
      # TODO read a different env var that specifies some sort of forking limit
 fi
 
