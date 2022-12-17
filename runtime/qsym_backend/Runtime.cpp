@@ -134,12 +134,14 @@ public:
     inputs_[offset] = value;
   }
 
-  void saveValues(const std::string &suffix) override {
+  // Return the filename of the saved values, or the empty string if there were no saved values
+  std::string saveValues(const std::string &suffix) override {
     if (auto handler = g_test_case_handler) {
       auto values = getConcreteValues();
       handler(values.data(), values.size());
+      return "";
     } else {
-      Solver::saveValues(suffix);
+      return Solver::saveValues(suffix);
     }
   }
 };

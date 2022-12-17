@@ -49,6 +49,10 @@ else
     stdlib_ldflags="-L${!libcxx_var}/lib -Wl,-rpath,${!libcxx_var}/lib -lstdc++ -lc++ -stdlib=libc++"
 fi
 
+if [[ -v SYMCC_FORKING_EXECUTION ]]
+     # TODO read a different env var that specifies some sort of forking limit
+fi
+
 if [ $# -eq 0 ]; then
     echo "Use sym++ as a drop-in replacement for clang++, e.g., sym++ -O2 -o foo foo.cpp" >&2
     exit 1
